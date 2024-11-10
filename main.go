@@ -17,7 +17,7 @@ var secretKey = []byte("seu_segredo")
 func gerarToken() (string, error) {
 	claims := jwt.MapClaims{
 		"sub": "usuario1",
-		"exp": time.Now().Add(time.Hour * 24 * 1).Unix(), //Expira em 7 dias
+		"exp": time.Now().Add(time.Hour * 1).Unix(), //Expira em 7 dias
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
