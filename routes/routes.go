@@ -7,8 +7,19 @@ import (
 )
 
 func InitRoutes(e *echo.Echo) {
-	e.GET("/produtos", controllers.ListarProdutos, middleware.JWTMiddleware())
-	e.POST("/produtos", controllers.CriarProduto, middleware.JWTMiddleware())
-	e.PUT("/produtos/:id", controllers.AtualizarProduto, middleware.JWTMiddleware())
-	e.DELETE("/produtos/:id", controllers.DeletarProduto, middleware.JWTMiddleware())
+	// Rota pública: listar produtos
+	e.GET("/produtos", controllers.ListarProdutos)
+
+	// Grupo de rotas protegidas por JWT
+	produtos := e.Group("/produtos")
+	produtos.Use(middleware.JWTMiddleware)
+
+	// Rota para criar produto
+	produtos.POST("", controllers.CriarProduto)
+
+	// Rota para atualizar produto
+	produtos.PUT("/:id", controllers.AtualizarProduto)
+
+	// Rota para deletar produto
+	produtos.DELETE("/:id", controllers.DeletarProduto)
 }
