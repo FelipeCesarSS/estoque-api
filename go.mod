@@ -1,4 +1,4 @@
-module github.com/seuusuario/estoque-api
+module github.com/FelipeCesarSS/estoque-api
 
 go 1.23.2
 
