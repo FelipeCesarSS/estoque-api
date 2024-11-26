@@ -1,7 +1,8 @@
 # Manipulaçao da API
 
-Gera o token e armazena em uma variavel - $tokenResponse = Invoke-RestMethod -Uri "http://localhost:8080/login" -Method Post
-$token = $tokenResponse.token
+Gera o token - $tokenResponse = Invoke-RestMethod -Uri "http://localhost:8080/login" -Method Post
+
+Armazena o token em uma variavel - $token = $tokenResponse.token
 
 Exibe o token gerado - Write-Host "Token JWT gerado: $token"
 
