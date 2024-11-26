@@ -1,4 +1,34 @@
-# Manipulaçao da API
+## PARA EXECUTAR A API SEM O DOCKER BASTA SEGUIR OS SEGUINTES PASSOS
+
+- Baixe o postgres
+- Crie um banco chamado estoque
+- Altere no arquivo config.go os enviroments
+- crie uma table com a seguinte query
+CREATE TABLE IF NOT EXISTS public.produtos
+(
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    preco NUMERIC(10,2) NOT NULL,
+    quantidade INTEGER NOT NULL,
+    categoria VARCHAR(50),
+    desconto NUMERIC(5,2) DEFAULT 0.00,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP
+);
+- Clone o repositorio com git clone <nome do repositorio>
+- Entre no arquivo com cd estoque-api
+- Instale a linguagem go no seu dispositivo
+- Execute a API com o comando go run main.go 
+
+## PARA EXECUTAR A API COM O DOCKER BASTA SEGUIR OS SEGUINTES PASSOS:
+
+- git clone <nome do repositorio>
+- cd estoque-api
+- docker compose up --build
+
+## PARA REALIZAR REQUISIÇÕES DIRETO NO WINDOWS POWERSHELL
 
 Gera o token - $tokenResponse = Invoke-RestMethod -Uri "http://localhost:8080/login" -Method Post
 
