@@ -9,7 +9,14 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-// ListarProdutos - handler para listar produtos
+func Login(c echo.Context) error {
+	token, err := services.GerarToken()
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": "Erro ao gerar o token"})
+	}
+	return c.JSON(http.StatusOK, map[string]string{"token": token})
+}
+
 func ListarProdutos(c echo.Context) error {
 	produtos, err := services.ListarTodosProdutos()
 	if err != nil {
@@ -18,7 +25,6 @@ func ListarProdutos(c echo.Context) error {
 	return c.JSON(http.StatusOK, produtos)
 }
 
-// CriarProduto - handler para adicionar um novo produto
 func CriarProduto(c echo.Context) error {
 	produto := new(models.Produto)
 	if err := c.Bind(produto); err != nil {
@@ -31,7 +37,6 @@ func CriarProduto(c echo.Context) error {
 	return c.JSON(http.StatusCreated, produto)
 }
 
-// AtualizarProduto - handler para atualizar um produto existente
 func AtualizarProduto(c echo.Context) error {
 	idParam := c.Param("id")
 	id, err := strconv.ParseUint(idParam, 10, 64)
@@ -51,7 +56,6 @@ func AtualizarProduto(c echo.Context) error {
 	return c.JSON(http.StatusOK, produto)
 }
 
-// DeletarProduto - handler para excluir produto
 func DeletarProduto(c echo.Context) error {
 	idParam := c.Param("id")
 	id, err := strconv.ParseUint(idParam, 10, 64)
