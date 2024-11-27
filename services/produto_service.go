@@ -9,7 +9,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 )
 
-var secretKey = []byte("seu_segredo")
+var secretKey = []byte("s3cREtK3Yt3st1234567qwertyuiop098765")
 
 func GerarToken() (string, error) {
 	claims := jwt.MapClaims{

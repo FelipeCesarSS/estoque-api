@@ -8,7 +8,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-var SecretKey = []byte("seu_segredo")
+var SecretKey = []byte("s3cREtK3Yt3st1234567qwertyuiop098765")
 
 func JWTMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
