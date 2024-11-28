@@ -57,3 +57,11 @@ PUT - Atualizar produto - Invoke-RestMethod -Uri "http://localhost:8080/produtos
 } | ConvertTo-Json) -ContentType "application/json"
 
 DELETE - excluir produto - Invoke-RestMethod -Uri "http://localhost:8080/produtos/:id" -Method Delete -Headers @{Authorization=("Bearer " + $token)}
+
+## EQUIPE
+
+- Charllys Omena
+- Vinicius Lima
+- Guy Gabriel
+- Felipe Ceza
+- Arthur Lima
